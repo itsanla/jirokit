@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
+import MobileFloatingNav from "@/components/mobile-floating-nav";
 import { getAllPosts } from "@/lib/blog";
 
 import {
@@ -47,6 +48,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <MobileFloatingNav />
       <Hero />
       <SponsoredBy />
       <AboutEvent />

@@ -8,25 +8,37 @@ const STATS = [
     count: (
       <>
         <NumberTicker
-          value={1000}
+          value={50}
           className="text-inherit dark:text-inherit"
         />
         +
       </>
     ),
-    title: "Pengguna",
+    title: "Proyek Selesai",
   },
   {
     count: (
       <>
         <NumberTicker
-          value={5000}
+          value={30}
           className="text-inherit dark:text-inherit"
         />
         +
       </>
     ),
-    title: "File Diproses",
+    title: "Klien Puas",
+  },
+  {
+    count: (
+      <>
+        <NumberTicker
+          value={5}
+          className="text-inherit dark:text-inherit"
+        />
+        +
+      </>
+    ),
+    title: "Tahun Pengalaman",
   },
   {
     count: (
@@ -38,21 +50,7 @@ const STATS = [
         %
       </>
     ),
-    title: "Privasi Terjamin",
-  },
-  {
-    count: (
-      <>
-        Rp{" "}
-        <NumberTicker
-          value={0}
-          startValue={100000}
-          direction="up"
-          className="text-inherit dark:text-inherit"
-        />
-      </>
-    ),
-    title: "Gratis Tanpa Batas",
+    title: "Kepuasan Klien",
   },
 ];
 
@@ -64,12 +62,10 @@ export default function OurStats() {
           Statistik Kami
         </p>
         <h2 className="text-4xl font-bold leading-tight text-blue-gray-900 lg:w-3/4 lg:text-5xl">
-          Angka yang Berbicara
+          Dipercaya oleh Banyak Klien
         </h2>
         <p className="mt-3 w-full text-lg text-gray-500 lg:w-9/12">
-          ruang.studio telah membantu ribuan pengguna menyelesaikan pekerjaan
-          digital mereka dengan cepat dan aman — semuanya gratis, langsung dari
-          browser.
+          ruang.studio telah membantu puluhan bisnis dari berbagai industri untuk bertransformasi digital dengan solusi yang tepat dan berkualitas.
         </p>
       </div>
       <div>

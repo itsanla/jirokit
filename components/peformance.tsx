@@ -9,9 +9,9 @@ export default function HeroScrollDemo() {
         titleComponent={
           <>
             <h1 className="text-4xl font-semibold text-black dark:text-white">
-              Kecepatan Kilat <br />
+              Teknologi Modern <br />
               <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                Keamanan Maksimal
+                Hasil Maksimal
               </span>
             </h1>
           </>

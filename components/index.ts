@@ -8,6 +8,5 @@ export { default as AboutEvent } from "./about-event";
 export { default as OurStats } from "./our-stats";
 export { default as EventContent } from "./event-content";
 export { default as Faq } from "./faq";
-export { default as AboutCard } from "./about-card";
 export { default as StatsCard } from "./stats-card";
-export { default as EventContentCard } from "./event-content-card";
+export { default as PricingCard } from "./pricing-card";

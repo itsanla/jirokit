@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { getAllPosts, getAllCategories } from "@/lib/blog";
 import BlogListClient from "@/components/blog/blog-list-client";
 import BlogFooter from "@/components/blog-footer";
+import Navbar from "@/components/navbar";
+import MobileFloatingNav from "@/components/mobile-floating-nav";
 import { Spotlight } from "@/components/ui/spotlight";
 import { cn } from "@/lib/utils";
 
@@ -19,6 +19,10 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-white">
+      {/* Navbar */}
+      <Navbar />
+      <MobileFloatingNav />
+
       {/* Header with Spotlight Effect */}
       <div className="relative flex h-[28rem] w-full overflow-hidden bg-black/[0.96] antialiased md:items-center md:justify-center">
         {/* Grid Background Pattern */}
@@ -34,34 +38,6 @@ export default function BlogPage() {
           className="-top-40 left-0 md:-top-20 md:left-60"
           fill="white"
         />
-
-        {/* Navigation - Absolute positioned at top */}
-        <div className="absolute left-0 right-0 top-0 z-20">
-          <div className="container mx-auto px-4 md:px-6 lg:px-12 xl:px-16">
-            <div className="flex items-center justify-between py-5">
-              <Link
-                href="/"
-                className="flex items-center gap-2 text-white/80 transition-colors hover:text-white"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                <span className="text-sm font-medium">Beranda</span>
-              </Link>
-              <Link href="/" className="flex items-center gap-2">
-                <img
-                  src="/icon.webp"
-                  alt="ruang.studio"
-                  width={28}
-                  height={28}
-                  className="rounded-lg"
-                  decoding="async"
-                />
-                <span className="text-lg font-bold text-white">
-                  ruang.studio
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div>
 
         {/* Hero Content */}
         <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0">

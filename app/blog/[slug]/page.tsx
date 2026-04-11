@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { ArrowLeft, Clock, User, Calendar, Tag } from "lucide-react";
+import { Clock, User, Calendar, Tag } from "lucide-react";
 import {
   getAllSlugs,
   getPostBySlug,
@@ -9,7 +8,10 @@ import {
 } from "@/lib/blog";
 import MdxContent from "@/components/blog/mdx-content";
 import BlogFooter from "@/components/blog-footer";
-import type { Metadata } from "next";
+import Navbar from "@/components/navbar";
+import MobileFloatingNav from "@/components/mobile-floating-nav";
+import type { Metadata };
+import Link from "next/link";
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -49,6 +51,10 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   return (
     <main className="min-h-screen bg-white">
+      {/* Navbar */}
+      <Navbar />
+      <MobileFloatingNav />
+
       {/* Header with Image */}
       <div className="relative">
         {/* Background Image */}
@@ -61,32 +67,6 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-gray-900/40" />
-        </div>
-
-        {/* Navigation */}
-        <div className="absolute left-0 right-0 top-0 z-20">
-          <div className="container mx-auto flex items-center justify-between px-4 py-5 md:px-6 lg:px-12 xl:px-16">
-            <Link
-              href="/blog"
-              className="flex items-center gap-2 rounded-lg bg-white/10 px-3 py-2 text-white/80 backdrop-blur-sm transition-all hover:bg-white/20 hover:text-white"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span className="text-sm font-medium">Halaman Blog</span>
-            </Link>
-            <Link href="/" className="flex items-center gap-2">
-              <img
-                src="/icon.webp"
-                alt="ruang.studio"
-                width={28}
-                height={28}
-                className="rounded-lg"
-                decoding="async"
-              />
-              <span className="text-lg font-bold text-white">
-                ruang.studio
-              </span>
-            </Link>
-          </div>
         </div>
 
         {/* Title Area (overlapping image) */}

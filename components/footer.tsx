@@ -32,22 +32,30 @@ export default function Footer() {
       <div className="container mx-auto flex flex-col">
         {/* CTA Banner */}
         <div
-          id="mulai"
+          id="kontak"
           className="mx-auto mb-5 flex w-full max-w-6xl flex-col items-center justify-center rounded-2xl bg-gray-900 p-5 py-10 md:mb-20"
         >
           <h2 className="text-center text-2xl font-bold text-white md:text-3xl">
-            Mulai Gunakan ruang.studio — Gratis!
+            Siap Wujudkan Proyek Digital Anda?
           </h2>
           <p className="my-3 text-center text-base text-white/80 md:w-7/12">
-            Konversi file, transkripsi audio, dan hapus background foto langsung
-            dari browser Anda. Tanpa install, tanpa daftar, tanpa biaya.
+            Konsultasikan kebutuhan website atau aplikasi Anda dengan tim kami. 
+            Gratis konsultasi, tanpa komitmen!
           </p>
           <div className="mt-2 flex w-full flex-col gap-3 md:w-fit md:flex-row">
             <a
-              href="/converter"
+              href="mailto:me@anla.my.id?subject=Konsultasi Proyek Website/Aplikasi"
               className="rounded-lg bg-white px-6 py-3 text-center font-medium text-gray-900 transition-colors hover:bg-gray-100"
             >
-              Coba Konversi File
+              Hubungi Kami
+            </a>
+            <a
+              href="https://wa.me/6281234567890?text=Halo, saya tertarik dengan layanan ruang.studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border-2 border-white px-6 py-3 text-center font-medium text-white transition-colors hover:bg-white/10"
+            >
+              WhatsApp
             </a>
           </div>
         </div>
@@ -116,7 +124,7 @@ export default function Footer() {
         {/* Copyright & Developer Info */}
         <div className="mt-12 border-t border-gray-200 pt-8 text-center">
           <p className="text-sm font-semibold text-gray-900">
-            © {CURRENT_YEAR} ruang.studio - Alat Digital Serba Bisa
+            © {CURRENT_YEAR} ruang.studio - Software House Profesional
           </p>
           <p className="mt-2 text-sm text-gray-600">
             Developed by{" "}
