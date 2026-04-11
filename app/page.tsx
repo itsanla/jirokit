@@ -5,17 +5,17 @@ import MobileFloatingNav from "@/components/mobile-floating-nav";
 import { getAllPosts } from "@/lib/blog";
 
 import {
-  SponsoredBySkeleton,
+  AboutEventSkeleton,
   EventContentSkeleton,
   FaqSkeleton,
   FooterSkeleton,
-  AboutEventSkeleton,
   OurStatsSkeleton,
   HeroScrollSkeleton,
+  SponsoredBySkeleton,
 } from "@/components/skeletons";
 
 // Lazy-load below-fold & heavy components with skeleton fallbacks
-const SponsoredBy = dynamic(() => import("@/components/sponsored-by"), {
+const PoweredBy = dynamic(() => import("@/components/powered-by"), {
   loading: () => <SponsoredBySkeleton />,
 });
 const AboutEvent = dynamic(() => import("@/components/about-event"), {
@@ -50,9 +50,9 @@ export default function Home() {
       <Navbar />
       <MobileFloatingNav />
       <Hero />
-      <SponsoredBy />
+      <PoweredBy />
       <AboutEvent />
-      <OurStats />
+      {/* <OurStats /> */}
       <HeroScrollDemo/>
       <EventContent posts={latestPosts} />
       <Faq />
