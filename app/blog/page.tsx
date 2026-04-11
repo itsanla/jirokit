@@ -1,0 +1,92 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { getAllPosts, getAllCategories } from "@/lib/blog";
+import BlogListClient from "@/components/blog/blog-list-client";
+import BlogFooter from "@/components/blog-footer";
+import { Spotlight } from "@/components/ui/spotlight";
+import { cn } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Blog — ruang.studio",
+  description:
+    "Baca artikel terbaru seputar teknologi, desain, produktivitas, dan keamanan digital di blog ruang.studio.",
+};
+
+export default function BlogPage() {
+  const posts = getAllPosts();
+  const categories = getAllCategories();
+
+  return (
+    <main className="min-h-screen bg-white">
+      {/* Header with Spotlight Effect */}
+      <div className="relative flex h-[28rem] w-full overflow-hidden bg-black/[0.96] antialiased md:items-center md:justify-center">
+        {/* Grid Background Pattern */}
+        <div
+          className={cn(
+            "pointer-events-none absolute inset-0 [background-size:40px_40px] select-none",
+            "[background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]"
+          )}
+        />
+
+        {/* Spotlight Effect */}
+        <Spotlight
+          className="-top-40 left-0 md:-top-20 md:left-60"
+          fill="white"
+        />
+
+        {/* Navigation - Absolute positioned at top */}
+        <div className="absolute left-0 right-0 top-0 z-20">
+          <div className="container mx-auto px-4 md:px-6 lg:px-12 xl:px-16">
+            <div className="flex items-center justify-between py-5">
+              <Link
+                href="/"
+                className="flex items-center gap-2 text-white/80 transition-colors hover:text-white"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                <span className="text-sm font-medium">Beranda</span>
+              </Link>
+              <Link href="/" className="flex items-center gap-2">
+                <img
+                  src="/icon.webp"
+                  alt="ruang.studio"
+                  width={28}
+                  height={28}
+                  className="rounded-lg"
+                  decoding="async"
+                />
+                <span className="text-lg font-bold text-white">
+                  ruang.studio
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0">
+          <span className="mb-6 inline-block w-full text-center rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-neutral-400">
+            Blog & Artikel
+          </span>
+          <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-7xl">
+            Wawasan &{" "}
+            <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text">
+              Pengetahuan
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-base font-normal text-neutral-300 md:text-lg">
+            Artikel terbaru seputar teknologi, desain, produktivitas, dan
+            keamanan digital untuk membantu Anda tetap terdepan.
+          </p>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="container mx-auto px-4 py-10 md:px-6 md:py-16 lg:px-12 xl:px-16">
+        <BlogListClient posts={posts} categories={categories} />
+      </div>
+
+      <BlogFooter />
+    </main>
+  );
+}

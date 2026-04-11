@@ -1,0 +1,123 @@
+---
+title: "Optimasi Performa Website: Panduan dari Dasar hingga Mahir"
+subtitle: "Teknik dan strategi untuk membuat website lebih cepat"
+description: "Panduan lengkap optimasi performa website meliputi lazy loading, caching, kompresi gambar, dan teknik modern lainnya untuk meningkatkan kecepatan loading."
+date: "2026-02-01"
+author: "Anla Harpanda"
+categories: ["Teknologi", "Tutorial", "Desain"]
+image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+published: true
+---
+
+## Mengapa Performa Website Penting?
+
+Kecepatan loading website memiliki dampak langsung terhadap:
+
+- **User Experience** — 53% pengguna meninggalkan halaman yang loading lebih dari 3 detik
+- **SEO** — Google menjadikan kecepatan sebagai faktor ranking
+- **Konversi** — Setiap 1 detik keterlambatan mengurangi konversi hingga 7%
+- **Bounce Rate** — Website lambat meningkatkan bounce rate secara signifikan
+
+## Metrik Performa Utama
+
+### Core Web Vitals
+
+Google menggunakan tiga metrik utama untuk mengukur performa website:
+
+| Metrik | Deskripsi | Target |
+|--------|-----------|--------|
+| **LCP** | Largest Contentful Paint | < 2.5 detik |
+| **INP** | Interaction to Next Paint | < 200 ms |
+| **CLS** | Cumulative Layout Shift | < 0.1 |
+
+## Teknik Optimasi
+
+### 1. Optimasi Gambar
+
+Gambar sering menjadi penyebab utama website lambat. Berikut teknik optimasinya:
+
+```html
+<!-- Gunakan format modern dengan fallback -->
+<picture>
+  <source srcset="image.avif" type="image/avif">
+  <source srcset="image.webp" type="image/webp">
+  <img src="image.jpg" alt="Deskripsi" loading="lazy">
+</picture>
+```
+
+**Tips optimasi gambar:**
+
+1. Gunakan format **WebP** atau **AVIF** yang lebih efisien
+2. Terapkan **lazy loading** untuk gambar di bawah fold
+3. Tentukan **width** dan **height** untuk menghindari layout shift
+4. Gunakan **responsive images** dengan srcset
+
+### 2. Code Splitting dan Lazy Loading
+
+```javascript
+// Next.js dynamic import
+import dynamic from 'next/dynamic';
+
+const HeavyComponent = dynamic(
+  () => import('./HeavyComponent'),
+  { 
+    loading: () => <Skeleton />,
+    ssr: false 
+  }
+);
+```
+
+### 3. Caching Strategy
+
+Implementasikan strategi caching yang tepat:
+
+- **Browser Cache** — Set Cache-Control headers untuk aset statis
+- **CDN** — Distribusikan konten melalui edge servers terdekat
+- **Service Worker** — Cache aset untuk penggunaan offline
+
+> Website yang dioptimasi dengan baik tidak hanya cepat saat pertama kali dikunjungi, tetapi juga semakin cepat pada kunjungan berikutnya berkat caching yang tepat.
+
+### 4. Minifikasi dan Kompresi
+
+Mengurangi ukuran file yang dikirim ke browser:
+
+- **Minifikasi** CSS, JavaScript, dan HTML
+- **Kompresi Gzip/Brotli** di server
+- **Tree Shaking** untuk menghilangkan dead code
+- **Purge CSS** untuk menghapus style yang tidak digunakan
+
+### 5. Font Optimization
+
+```css
+/* Preload font penting */
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap; /* Hindari FOIT */
+  src: url('/fonts/roboto.woff2') format('woff2');
+}
+```
+
+## Tools untuk Mengukur Performa
+
+Gunakan tools berikut untuk menganalisis performa website Anda:
+
+1. **Google Lighthouse** — Audit performa komprehensif
+2. **PageSpeed Insights** — Analisis dari data lapangan
+3. **WebPageTest** — Testing dari berbagai lokasi
+4. **Chrome DevTools** — Performance profiling real-time
+
+## Checklist Optimasi
+
+- [ ] Gambar dioptimasi dan menggunakan format modern
+- [ ] Lazy loading diterapkan untuk konten di bawah fold
+- [ ] CSS dan JS diminifikasi
+- [ ] Kompresi Gzip/Brotli aktif
+- [ ] Caching headers dikonfigurasi
+- [ ] Font menggunakan `font-display: swap`
+- [ ] Core Web Vitals dalam zona hijau
+
+## Kesimpulan
+
+Optimasi performa website adalah proses berkelanjutan. Dengan menerapkan teknik-teknik di atas secara bertahap, Anda dapat membuat website yang cepat, responsif, dan memberikan pengalaman terbaik bagi pengguna.
+
+Mulailah dengan mengukur performa saat ini menggunakan Lighthouse, kemudian prioritaskan perbaikan berdasarkan dampak terbesar.
