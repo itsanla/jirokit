@@ -3,39 +3,40 @@
 const PRICING_PLANS = [
   {
     title: "Starter",
-    price: "Rp 5 juta",
+    price: "Rp 650K",
     period: "/ proyek",
-    description: "Cocok untuk bisnis kecil atau startup yang baru memulai",
+    description: "Paket hemat untuk bisnis yang baru memulai",
     features: [
-      "Landing Page Profesional (5 halaman)",
-      "Desain Responsif (Mobile & Desktop)",
-      "SEO Basic Optimization",
-      "Form Kontak & Integrasi Email",
-      "Google Analytics Setup",
-      "Hosting & Domain (1 tahun)",
+      "Domain .com gratis 1 tahun",
+      "Hosting gratis 1 tahun",
+      "landing page profesional",
+      "5 halaman blog/artikel (tidak bisa diubah)",
+      "Desain responsif (Mobile & Desktop)",
+      "SEO - Muncul di pencarian Google",
+      "Google Analytics",
       "Revisi hingga 3x",
-      "Maintenance 1 bulan gratis",
     ],
     ctaText: "Mulai Sekarang",
     ctaHref: "#kontak",
   },
   {
     title: "Professional",
-    price: "Rp 15 juta",
+    price: "Rp 1,3 Juta",
     period: "/ proyek",
-    description: "Untuk bisnis yang membutuhkan fitur lebih lengkap dan kompleks",
+    description: "Paket lengkap dengan fitur dinamis dan database",
     features: [
-      "Website Full Custom (10-15 halaman)",
-      "Admin Panel / CMS",
-      "Database Integration",
-      "User Authentication & Authorization",
-      "Payment Gateway Integration",
-      "API Development",
-      "Advanced SEO & Performance Optimization",
-      "Hosting & Domain (1 tahun)",
+      "Domain .com gratis 1 tahun",
+      "Hosting gratis 1 tahun",
+      "Database gratis 1 tahun",
+      "landing page profesional",
+      "halaman website blog/artikel unlimited",
+      "CRUD Blog & User Management",
+      "Authentication & Login System",
+      "Desain responsif (Mobile & Desktop)",
+      "SEO - Muncul di pencarian Google",
+      "Google Analytics",
       "Revisi hingga 5x",
-      "Maintenance 3 bulan gratis",
-      "Training & Dokumentasi",
+      "maintenance 1x sebulan"
     ],
     popular: true,
     ctaText: "Pilih Paket Ini",
@@ -45,7 +46,7 @@ const PRICING_PLANS = [
 
 export default function Pricing() {
   return (
-    <section id="layanan" className="py-8 md:py-12">
+    <section id="layanan" className="py-2">
       <div className="container mx-auto px-4 md:px-6 lg:px-12 xl:px-16">
         <div className="text-center mb-12">
           <p className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-3">
@@ -84,7 +85,7 @@ export default function Pricing() {
                 </div>
               </div>
 
-              <ul className="space-y-2.5 md:space-y-3 mb-6 md:mb-8">
+              <ul className="space-y-2.5 md:space-y-3 mb-6 md:mb-8 max-h-[280px] md:max-h-none overflow-y-auto scrollbar-hide">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-2.5 md:gap-3 text-xs md:text-sm">
                     <svg
