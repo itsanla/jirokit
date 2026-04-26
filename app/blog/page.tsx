@@ -8,9 +8,34 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Blog — jirokit",
+  title: "Blog — Tips Landing Page, SEO & Digital Marketing untuk UMKM",
   description:
-    "Baca artikel terbaru seputar teknologi, desain, produktivitas, dan keamanan digital di blog jirokit.",
+    "Baca artikel terbaru seputar pembuatan landing page, SEO untuk UMKM, strategi konversi, dan digital marketing untuk bisnis Indonesia di blog Jirokit.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    type: "website",
+    title: "Blog Jirokit — Tips Landing Page & Digital Marketing UMKM Indonesia",
+    description:
+      "Artikel praktis tentang landing page profesional, SEO, dan strategi digital untuk UMKM, startup, dan brand lokal Indonesia.",
+    url: "/blog",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Blog Jirokit — Tips Landing Page & Digital Marketing",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog Jirokit — Tips Landing Page & Digital Marketing UMKM",
+    description:
+      "Artikel praktis tentang landing page profesional, SEO, dan strategi digital untuk bisnis Indonesia.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function BlogPage() {

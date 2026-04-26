@@ -1,115 +1,111 @@
 ---
-title: "Mengenal WebAssembly: Teknologi Masa Depan Web"
-subtitle: "Bagaimana WebAssembly mengubah cara kita membangun aplikasi web"
-description: "Pengenalan lengkap tentang WebAssembly (Wasm) — teknologi revolusioner yang memungkinkan menjalankan kode berkinerja tinggi langsung di browser."
+title: "Panduan Memilih Jasa Pembuatan Landing Page untuk Bisnis Anda"
+subtitle: "Pertanyaan yang harus Anda tanyakan sebelum memilih digital studio"
+description: "Tidak semua jasa pembuatan website sama. Pelajari kriteria penting memilih digital studio yang tepat untuk membuat landing page bisnis Anda — dari portofolio hingga proses kerja."
 date: "2026-01-28"
-author: "Anla Harpanda"
-categories: ["Teknologi", "Produktivitas"]
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
+author: "Tim Jirokit"
+categories: ["Website", "Tutorial", "UMKM"]
+image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
 published: true
 ---
 
-## Apa Itu WebAssembly?
+## Jangan Salah Pilih Jasa Landing Page
 
-**WebAssembly** (Wasm) adalah format instruksi biner yang dirancang untuk eksekusi berkinerja tinggi di browser web. WebAssembly memungkinkan pengembang menjalankan kode yang ditulis dalam bahasa seperti C, C++, dan Rust langsung di browser dengan kecepatan mendekati native.
+Memilih jasa pembuatan landing page yang salah bisa membuang waktu, uang, dan kesempatan bisnis. Di Indonesia, semakin banyak freelancer dan digital studio yang menawarkan jasa ini — tapi tidak semua memahami apa yang benar-benar membuat landing page berhasil.
 
-### Sejarah Singkat
+Artikel ini akan membantu Anda mengajukan pertanyaan yang tepat dan membuat keputusan yang cerdas.
 
-- **2015** — WebAssembly pertama kali diumumkan
-- **2017** — Browser utama mulai mendukung Wasm
-- **2019** — Menjadi standar W3C resmi
-- **2024** — Adopsi meluas untuk aplikasi kompleks
+## 7 Kriteria Penting Memilih Jasa Landing Page
 
-## Mengapa WebAssembly Penting?
+### 1. Apakah Mereka Punya Portofolio yang Relevan?
 
-WebAssembly membuka kemungkinan baru yang sebelumnya tidak mungkin dilakukan di browser:
+Portofolio adalah bukti nyata. Ketika melihat portofolio, tanyakan:
 
-1. **Performa tinggi** — Eksekusi mendekati kecepatan native
-2. **Bahasa beragam** — Bukan hanya JavaScript, tapi juga C++, Rust, Go
-3. **Keamanan** — Berjalan dalam sandbox yang aman
-4. **Portabilitas** — Satu binary, berjalan di mana saja
+- Apakah ada contoh landing page untuk industri yang mirip dengan bisnis Anda?
+- Apakah desainnya terlihat modern dan profesional?
+- Apakah ada data konversi atau hasil nyata dari landing page tersebut?
 
-> WebAssembly bukan pengganti JavaScript, melainkan pelengkap yang membuka kemungkinan baru untuk web.
+> Sebuah desain yang indah tanpa hasil bisnis nyata hanyalah karya seni, bukan alat bisnis.
 
-## Use Cases WebAssembly
+### 2. Apakah Mereka Memahami Copywriting untuk Konversi?
 
-### Aplikasi Produktivitas
+Landing page bukan hanya tentang desain visual. **Copywriting** (teks/kata-kata) yang tepat bisa meningkatkan konversi 2-3x lipat dibanding desain yang bagus tapi dengan teks yang lemah.
 
-Banyak aplikasi berat yang kini bisa berjalan di browser berkat Wasm:
+Tanyakan: apakah mereka menyediakan bantuan penulisan teks, atau hanya desain?
 
-| Aplikasi | Fungsi | Teknologi |
-|----------|--------|-----------|
-| Figma | Desain UI/UX | C++ → Wasm |
-| AutoCAD Web | CAD Design | C++ → Wasm |
-| Photoshop Web | Edit Foto | C++ → Wasm |
-| Google Earth | Peta 3D | C++ → Wasm |
+### 3. Apakah Landing Page Mereka Mobile-First?
 
-### Konversi File di Browser
+Di Indonesia, **lebih dari 70% pengguna internet** mengakses website lewat smartphone. Landing page yang tidak dioptimasi untuk mobile sama artinya dengan membuang setidaknya 70% calon pelanggan Anda.
 
-Salah satu penggunaan paling menarik dari WebAssembly adalah **konversi file langsung di browser**:
+Pastikan preview mobile terlihat sempurna sebelum setuju.
 
-```javascript
-// Contoh menggunakan FFmpeg.wasm untuk konversi video
-import { FFmpeg } from '@ffmpeg/ffmpeg';
+### 4. Apakah Ada Optimasi SEO dalam Proses Mereka?
 
-const ffmpeg = new FFmpeg();
-await ffmpeg.load();
+Banyak pembuat website yang tidak memperhatikan SEO dasar seperti:
 
-// Konversi video tanpa upload ke server
-await ffmpeg.writeFile('input.mp4', videoData);
-await ffmpeg.exec(['-i', 'input.mp4', 'output.webm']);
-const output = await ffmpeg.readFile('output.webm');
-```
+- Meta title dan description yang tepat
+- Struktur heading yang benar (H1, H2, H3)
+- Kecepatan loading halaman
+- Schema markup untuk mesin pencari
 
-Keuntungan pendekatan ini:
+Tanyakan secara eksplisit: "Apa saja yang Anda lakukan untuk SEO pada setiap landing page?"
 
-- 🔒 File tidak pernah meninggalkan perangkat pengguna
-- ⚡ Proses cepat tanpa latency jaringan
-- 💾 Tidak membutuhkan server untuk processing
-- 🌐 Bisa digunakan secara offline
+### 5. Seberapa Cepat Landing Page Mereka Loading?
 
-### Game di Browser
+**Kecepatan adalah konversi.** Penelitian Google menunjukkan bahwa setiap tambahan 1 detik loading time, tingkat konversi turun rata-rata 7%.
 
-WebAssembly memungkinkan game berkinerja tinggi berjalan di browser:
+Minta mereka menunjukkan skor Google PageSpeed Insights dari landing page yang sudah mereka buat.
 
-- **Unity** — Export game ke WebGL menggunakan Wasm
-- **Unreal Engine** — Support browser melalui Wasm
-- **Game retro** — Emulator NES, SNES, dan lainnya
+| Skor PageSpeed | Artinya |
+|----------------|---------|
+| 90-100 | Excellent — sangat direkomendasikan |
+| 70-89 | Good — acceptable |
+| 50-69 | Needs Improvement — perlu perbaikan |
+| 0-49 | Poor — hindari |
 
-## Cara Kerja WebAssembly
+### 6. Apa Model Harga dan Siapa yang Memiliki Website?
 
-```
-Source Code (C/Rust) → Compiler → .wasm binary → Browser → Eksekusi
-```
+Pastikan Anda memahami:
+- Apakah harga sudah termasuk domain dan hosting?
+- Apakah ada biaya maintenance bulanan?
+- Setelah proyek selesai, **siapa yang memiliki kode dan design file?**
+- Apakah Anda bisa update konten sendiri?
 
-Proses kompilasi WebAssembly:
+Beberapa jasa mengunci klien dengan sistem proprietary yang membuat Anda bergantung selamanya. Pastikan Anda mendapat akses penuh ke aset website Anda.
 
-1. Tulis kode dalam bahasa tingkat tinggi (C, Rust, Go)
-2. Kompilasi ke format `.wasm` menggunakan toolchain khusus
-3. Load file `.wasm` di browser menggunakan JavaScript
-4. Browser mengompilasi Wasm ke machine code untuk eksekusi
+### 7. Bagaimana Proses Komunikasi dan Revisi?
 
-## WebAssembly di jirokit
+Proses yang baik biasanya meliputi:
 
-Di **jirokit**, kami menggunakan WebAssembly secara ekstensif:
+1. **Brief discovery** — Diskusi mendalam tentang bisnis, target audience, dan tujuan
+2. **Wireframe/mockup** — Preview sebelum pengembangan dimulai
+3. **Development** — Pembuatan website
+4. **Review & revisi** — Minimal 2-3 putaran revisi
+5. **Launch & handover** — Peluncuran dan serah terima
 
-- **Pandoc Wasm** — Konversi dokumen (DOCX, PDF, Markdown, dll.)
-- **FFmpeg Wasm** — Konversi dan pemrosesan audio/video
-- **Image Processing** — Manipulasi gambar secara lokal
+Hindari jasa yang langsung "gebukin" desain tanpa proses discovery yang proper.
 
-Semua proses berjalan **100% di perangkat pengguna** — tidak ada file yang diunggah ke server kami.
+## Tanda-Tanda Red Flag yang Harus Dihindari
 
-## Masa Depan WebAssembly
+- ❌ Tidak punya portofolio atau portofolionya mencurigakan
+- ❌ Harga sangat murah tanpa penjelasan logis
+- ❌ Tidak bisa menjelaskan strategi konversi
+- ❌ Tidak menyebut SEO sama sekali
+- ❌ Deadline yang tidak realistis (< 3 hari untuk landing page custom)
+- ❌ Tidak ada kontrak atau perjanjian tertulis
 
-Perkembangan yang menarik untuk diperhatikan:
+## Kenapa Jirokit Beda?
 
-- **WASI** — WebAssembly System Interface untuk penggunaan di luar browser
-- **Component Model** — Memudahkan interoperabilitas antar modul
-- **Garbage Collection** — Support untuk bahasa dengan GC (Java, C#, Kotlin)
-- **Thread Support** — Paralelisme native untuk performa lebih baik
+Di Jirokit, kami bukan sekadar membuatkan website — kami membangun **aset digital** yang bekerja untuk bisnis Anda:
+
+- **Proses discovery yang mendalam** — Kami memahami bisnis Anda sebelum menulis satu baris kode
+- **Desain berbasis data** — Setiap keputusan desain didasarkan pada prinsip konversi yang terbukti
+- **SEO built-in** — Optimasi mesin pencari bukan afterthought, tapi bagian dari DNA setiap proyek
+- **Mobile-first** — Semua landing page kami terlihat sempurna di semua ukuran layar
+- **Transparan** — Anda memiliki semua aset, tidak ada lock-in
 
 ## Kesimpulan
 
-WebAssembly adalah teknologi yang mengubah paradigma pengembangan web. Dengan kemampuannya menjalankan kode berkinerja tinggi langsung di browser, Wasm membuka pintu untuk aplikasi web yang sebelumnya hanya bisa dijalankan secara native.
+Memilih jasa pembuatan landing page adalah keputusan bisnis penting. Luangkan waktu untuk melakukan due diligence, tanyakan pertanyaan yang tepat, dan jangan tergiur harga murah tanpa kualitas yang jelas.
 
-Jika Anda seorang web developer, sekarang adalah waktu yang tepat untuk mulai mempelajari dan mengeksplorasi WebAssembly.
+Landing page yang tepat bukan biaya — ini adalah **investasi dengan ROI yang terukur**. Pilih mitra yang memahami hal ini.

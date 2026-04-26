@@ -30,8 +30,33 @@ export async function generateMetadata({
   if (!post) return { title: "Artikel Tidak Ditemukan" };
 
   return {
-    title: `${post.frontmatter.title} — jirokit`,
+    title: post.frontmatter.title,
     description: post.frontmatter.description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
+      url: `/blog/${slug}`,
+      publishedTime: post.frontmatter.date,
+      authors: [post.frontmatter.author],
+      tags: post.frontmatter.categories,
+      images: [
+        {
+          url: post.frontmatter.image,
+          width: 800,
+          alt: post.frontmatter.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
+      images: [post.frontmatter.image],
+    },
   };
 }
 
@@ -49,8 +74,37 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     3
   );
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.frontmatter.title,
+    description: post.frontmatter.description,
+    image: post.frontmatter.image,
+    datePublished: post.frontmatter.date,
+    author: {
+      "@type": "Person",
+      name: post.frontmatter.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Jirokit",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://jirokit.com/icon.webp",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://jirokit.com/blog/${slug}`,
+    },
+  };
+
   return (
     <main className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Navbar */}
       <Navbar />
       <MobileFloatingNav />
