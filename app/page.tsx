@@ -21,10 +21,13 @@ const PoweredBy = dynamic(() => import("@/components/powered-by"), {
 const AboutEvent = dynamic(() => import("@/components/about-event"), {
   loading: () => <AboutEventSkeleton />,
 });
+const Pricing = dynamic(() => import("@/components/pricing"), {
+  loading: () => <AboutEventSkeleton />,
+});
 const OurStats = dynamic(() => import("@/components/our-stats"), {
   loading: () => <OurStatsSkeleton />,
 });
-const HeroScrollDemo = dynamic(() => import("@/components/peformance"), {
+const HeroScrollDemo = dynamic(() => import("@/components/demo"), {
   loading: () => <HeroScrollSkeleton />,
 });
 const EventContent = dynamic(() => import("@/components/event-content"), {
@@ -52,6 +55,7 @@ export default function Home() {
       <Hero />
       <PoweredBy />
       <AboutEvent />
+      <Pricing />
       {/* <OurStats /> */}
       <HeroScrollDemo/>
       <EventContent posts={latestPosts} />

@@ -38,7 +38,7 @@ export default function Navbar() {
               decoding="async"
             />
             <span className="text-lg font-bold">
-              ruang.studio
+              jirokit
             </span>
           </a>
         </NavbarLogo>

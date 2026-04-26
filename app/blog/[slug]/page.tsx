@@ -10,8 +10,8 @@ import MdxContent from "@/components/blog/mdx-content";
 import BlogFooter from "@/components/blog-footer";
 import Navbar from "@/components/navbar";
 import MobileFloatingNav from "@/components/mobile-floating-nav";
-import type { Metadata };
 import Link from "next/link";
+import type { Metadata } from "next";
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -30,7 +30,7 @@ export async function generateMetadata({
   if (!post) return { title: "Artikel Tidak Ditemukan" };
 
   return {
-    title: `${post.frontmatter.title} — ruang.studio`,
+    title: `${post.frontmatter.title} — jirokit`,
     description: post.frontmatter.description,
   };
 }

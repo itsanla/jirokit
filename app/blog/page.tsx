@@ -8,9 +8,9 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Blog — ruang.studio",
+  title: "Blog — jirokit",
   description:
-    "Baca artikel terbaru seputar teknologi, desain, produktivitas, dan keamanan digital di blog ruang.studio.",
+    "Baca artikel terbaru seputar teknologi, desain, produktivitas, dan keamanan digital di blog jirokit.",
 };
 
 export default function BlogPage() {

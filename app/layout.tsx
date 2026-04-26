@@ -9,7 +9,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "ruang.studio — Alat Digital Serba Bisa",
+  title: "jirokit — Alat Digital Serba Bisa",
   description:
     "Alat digital serba bisa untuk konversi file, transkripsi audio, dan hapus background foto. Semua proses di perangkat Anda sendiri — cepat, aman, dan gratis.",
 };

@@ -25,13 +25,13 @@ export default function MobileFloatingNav() {
       href: "/#layanan",
     },
     {
-      title: "ruang.studio",
+      title: "jirokit",
       icon: (
         <img
           src="/icon.webp"
           width={20}
           height={20}
-          alt="ruang.studio"
+          alt="jirokit"
           className="rounded-lg"
         />
       ),

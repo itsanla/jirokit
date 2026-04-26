@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export default function HeroScrollDemo() {
@@ -17,15 +16,15 @@ export default function HeroScrollDemo() {
           </>
         }
       >
-        <img
-          src={`/display.webp`}
-          alt="hero"
+        <video
+          src="/demo.mp4"
           height={720}
           width={1400}
           className="mx-auto rounded-2xl object-cover h-full object-left-top"
-          draggable={false}
-          decoding="async"
-          fetchPriority="high"
+          autoPlay
+          loop
+          muted
+          playsInline
         />
       </ContainerScroll>
     </div>

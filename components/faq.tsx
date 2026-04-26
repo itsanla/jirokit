@@ -5,7 +5,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 const FAQS = [
   {
-    title: "1. Apa saja layanan yang ditawarkan ruang.studio?",
+    title: "1. Apa saja layanan yang ditawarkan jirokit?",
     desc: "Kami menyediakan layanan pembuatan website (landing page, company profile, e-commerce), aplikasi web custom, aplikasi mobile (iOS & Android), sistem manajemen internal, API development, dan konsultasi teknologi. Kami juga menyediakan layanan maintenance dan support setelah proyek selesai.",
   },
   {
@@ -43,7 +43,7 @@ export default function Faq() {
           </h2>
           <p className="mx-auto mb-24 text-lg text-gray-500 lg:w-3/5">
             Berikut jawaban untuk pertanyaan yang paling sering ditanyakan
-            tentang layanan ruang.studio. Jika masih ada pertanyaan lain, jangan ragu
+            tentang layanan jirokit. Jika masih ada pertanyaan lain, jangan ragu
             menghubungi kami untuk konsultasi gratis.
           </p>
         </div>

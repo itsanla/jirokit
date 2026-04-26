@@ -50,7 +50,7 @@ export default function Footer() {
               Hubungi Kami
             </a>
             <a
-              href="https://wa.me/6281234567890?text=Halo, saya tertarik dengan layanan ruang.studio"
+              href="https://wa.me/6285122359597?text=Halo, saya tertarik dengan layanan jirokit"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg border-2 border-white px-6 py-3 text-center font-medium text-white transition-colors hover:bg-white/10"
@@ -66,7 +66,7 @@ export default function Footer() {
             href="/"
             className="text-lg font-semibold text-gray-900"
           >
-            ruang.studio
+            jirokit
           </a>
           <ul className="mx-auto my-4 flex w-max items-center justify-center gap-4 md:my-0">
             {LINKS.map((link, index) => (
@@ -124,7 +124,7 @@ export default function Footer() {
         {/* Copyright & Developer Info */}
         <div className="mt-12 border-t border-gray-200 pt-8 text-center">
           <p className="text-sm font-semibold text-gray-900">
-            © {CURRENT_YEAR} ruang.studio - Software House Profesional
+            © {CURRENT_YEAR} jirokit - Software House Profesional
           </p>
           <p className="mt-2 text-sm text-gray-600">
             Developed by{" "}

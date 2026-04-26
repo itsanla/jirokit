@@ -65,7 +65,7 @@ export default function OurStats() {
           Dipercaya oleh Banyak Klien
         </h2>
         <p className="mt-3 w-full text-lg text-gray-500 lg:w-9/12">
-          ruang.studio telah membantu puluhan bisnis dari berbagai industri untuk bertransformasi digital dengan solusi yang tepat dan berkualitas.
+          jirokit telah membantu puluhan bisnis dari berbagai industri untuk bertransformasi digital dengan solusi yang tepat dan berkualitas.
         </p>
       </div>
       <div>

@@ -36,7 +36,7 @@ export default function BlogFooter() {
             href="/"
             className="text-lg font-semibold text-gray-900"
           >
-            ruang.studio
+            jirokit
           </a>
           <ul className="mx-auto my-4 flex w-max items-center justify-center gap-4 md:my-0">
             {LINKS.map((link, index) => (
@@ -94,7 +94,7 @@ export default function BlogFooter() {
         {/* Copyright & Developer Info */}
         <div className="mt-12 border-t border-gray-200 pt-8 text-center">
           <p className="text-sm font-semibold text-gray-900">
-            © {CURRENT_YEAR} ruang.studio - Alat Digital Serba Bisa
+            © {CURRENT_YEAR} jirokit - Alat Digital Serba Bisa
           </p>
           <p className="mt-2 text-sm text-gray-600">
             Developed by{" "}
