@@ -8,7 +8,9 @@
   ],
     "vars": {
     "CLOUDINARY_CLOUD_NAME": "dn8cktife",
-    "FRONTEND_URL":"https://smk2batusangkar.tech"
+    "FRONTEND_URL":"https://jirokit.com",
+    "ALLOWED_ORIGINS":"https://jirokit.com,http://localhost:3000",
+    "JWT_SECRET":"dev-only-change-me-in-production"
   },
   "d1_databases": [
     {

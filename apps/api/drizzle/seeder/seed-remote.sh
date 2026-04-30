@@ -24,6 +24,7 @@ SEEDERS=(
   "01_events.sql"
   "02_quotas.sql"
   "03_promo_codes.sql"
+  "04_users.sql"
 )
 
 # Get the directory where this script is located

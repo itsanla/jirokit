@@ -1,7 +1,7 @@
 -- Seed: Event
 -- 5 program Digitalisasi UMKM Nusantara
 
-INSERT INTO `Event` (id, slug, title, emoji, target, description, benefits, normal_price, event_price, is_active) VALUES
+INSERT INTO `Event` (id, slug, title, emoji, target, description, benefits, image_url, normal_price, event_price, is_active) VALUES
 (
   1,
   'digitalisasi-kuliner-nusantara',
@@ -20,6 +20,7 @@ INSERT INTO `Event` (id, slug, title, emoji, target, description, benefits, norm
     'Desain responsif Mobile & Desktop',
     '2x revisi desain'
   ),
+  '/image/event.webp',
   399000,
   299000,
   1
@@ -43,6 +44,7 @@ INSERT INTO `Event` (id, slug, title, emoji, target, description, benefits, norm
     'Desain responsif Mobile & Desktop',
     '2x revisi desain'
   ),
+  '/image/event.webp',
   399000,
   299000,
   1
@@ -66,6 +68,7 @@ INSERT INTO `Event` (id, slug, title, emoji, target, description, benefits, norm
     'Desain responsif Mobile & Desktop',
     '2x revisi desain'
   ),
+  '/image/event.webp',
   399000,
   299000,
   1
@@ -89,6 +92,7 @@ INSERT INTO `Event` (id, slug, title, emoji, target, description, benefits, norm
     'Desain responsif Mobile & Desktop',
     '2x revisi desain'
   ),
+  '/image/event.webp',
   399000,
   299000,
   1
@@ -112,6 +116,7 @@ INSERT INTO `Event` (id, slug, title, emoji, target, description, benefits, norm
     'Desain responsif Mobile & Desktop',
     '2x revisi desain'
   ),
+  '/image/event.webp',
   399000,
   299000,
   1

@@ -4,27 +4,34 @@ import type { Env, Variables, ResponseApi } from "../types";
 import { getDb } from "../db";
 import { eventsTable, quotasTable, promoCodesTable } from "../db/schema";
 import { AppError, handleAnyError } from "../errors/app_error";
-import { convertTimestamps, convertTimestampsArray } from "../utils/date";
+import { unixToISO } from "../utils/date";
+import type { Event, Quota } from "../db/schema";
 
 export const eventsApp = new Hono<{ Bindings: Env; Variables: Variables }>();
 
-type EventResponse = {
-  id: number;
-  slug: string;
-  title: string;
-  emoji: string;
-  target: string;
-  description: string;
-  benefits: string[];
-  normal_price: number;
-  event_price: number;
-  is_active: number;
+type EventResponse = Omit<Event, "createdAt" | "updatedAt"> & {
   total_slots: number;
   remaining_slots: number;
   promo_code: string | null;
   createdAt: string | null;
   updatedAt: string | null;
 };
+
+function toResponse(
+  event: Event,
+  quota: Quota | null,
+  promoCode: string | null,
+): EventResponse {
+  const { createdAt, updatedAt, ...rest } = event;
+  return {
+    ...rest,
+    total_slots: quota?.total_slots ?? 0,
+    remaining_slots: quota?.remaining_slots ?? 0,
+    promo_code: promoCode,
+    createdAt: unixToISO(createdAt),
+    updatedAt: unixToISO(updatedAt),
+  };
+}
 
 eventsApp.get("/", async (c) => {
   try {
@@ -54,17 +61,14 @@ eventsApp.get("/", async (c) => {
       }
     }
 
-    const data: EventResponse[] = rows.map(({ event, quota }) => ({
-      ...event,
-      total_slots: quota?.total_slots ?? 0,
-      remaining_slots: quota?.remaining_slots ?? 0,
-      promo_code: promoByEvent.get(event.id) ?? null,
-    }));
+    const data: EventResponse[] = rows.map(({ event, quota }) =>
+      toResponse(event, quota, promoByEvent.get(event.id) ?? null),
+    );
 
     const body: ResponseApi<EventResponse[]> = {
       success: true,
       message: "OK",
-      data: convertTimestampsArray(data),
+      data,
     };
     return c.json(body);
   } catch (e) {
@@ -96,17 +100,12 @@ eventsApp.get("/:slug", async (c) => {
       )
       .limit(1);
 
-    const data: EventResponse = {
-      ...row.event,
-      total_slots: row.quota?.total_slots ?? 0,
-      remaining_slots: row.quota?.remaining_slots ?? 0,
-      promo_code: promo?.code ?? null,
-    };
+    const data = toResponse(row.event, row.quota, promo?.code ?? null);
 
     const body: ResponseApi<EventResponse> = {
       success: true,
       message: "OK",
-      data: convertTimestamps(data),
+      data,
     };
     return c.json(body);
   } catch (e) {

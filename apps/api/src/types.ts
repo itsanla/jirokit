@@ -1,3 +1,5 @@
+import type { JwtPayload } from "./utils/jwt";
+
 export interface Env {
   DB: D1Database;
   JWT_SECRET?: string;
@@ -8,7 +10,9 @@ export interface Env {
   ALLOWED_ORIGINS?: string;
 }
 
-export interface Variables {}
+export interface Variables {
+  user?: JwtPayload;
+}
 
 export interface ResponseApi<T = unknown> {
   success: boolean;
