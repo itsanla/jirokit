@@ -40,41 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# prod
-dist/
-
-# dev
-.yarn/
-!.yarn/releases
-.vscode/*
-!.vscode/launch.json
-!.vscode/*.code-snippets
-.idea/workspace.xml
-.idea/usage.statistics.xml
-.idea/shelf
-
-# deps
-node_modules/
-.wrangler
-
-# env
-.env
-.env.production
-.dev.vars
-
-# logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-# misc
-.DS_Store
-
-source-code/
-.claude/
-skills-lock.json
-.vscode/
+# Large WASM binaries (auto-copied from node_modules via postinstall)
+public/pandoc.wasm
