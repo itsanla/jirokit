@@ -18,14 +18,15 @@ interface EventDetailPageProps {
 }
 
 export async function generateStaticParams() {
-  return getAllEventSlugs().map((slug) => ({ slug }));
+  const slugs = await getAllEventSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: EventDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const event = getEventBySlug(slug);
+  const event = await getEventBySlug(slug);
   if (!event) return { title: "Event Tidak Ditemukan" };
 
   const title = `${event.title} — Website Profesional Gratis untuk UMKM`;
@@ -110,13 +111,13 @@ export default async function EventDetailPage({
   params,
 }: EventDetailPageProps) {
   const { slug } = await params;
-  const event = getEventBySlug(slug);
+  const event = await getEventBySlug(slug);
 
   if (!event) {
     notFound();
   }
 
-  const relatedEvents = getRelatedEvents(event.slug, 3);
+  const relatedEvents = await getRelatedEvents(event.slug, 3);
 
   const eventJsonLd = {
     "@context": "https://schema.org",

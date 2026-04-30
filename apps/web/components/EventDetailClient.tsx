@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { CheckCircle2, XCircle, MessageCircle, Sparkles } from "lucide-react";
 import type { Event } from "@/lib/events";
 import { formatIDR } from "@/lib/events";
+import { apiFetch, ApiError } from "@/lib/api";
 
 const WHATSAPP_NUMBER = "6285122359597";
 
@@ -11,7 +12,7 @@ interface EventDetailClientProps {
   event: Event;
 }
 
-type CodeStatus = "idle" | "verified" | "invalid";
+type CodeStatus = "idle" | "checking" | "verified" | "invalid";
 
 function buildWaUrl(event: Event, status: CodeStatus, code: string): string {
   const lines = [
@@ -38,9 +39,19 @@ function buildWaUrl(event: Event, status: CodeStatus, code: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
 }
 
+interface ValidateResponse {
+  valid: boolean;
+  code: string;
+  event_slug: string;
+  discount_type: string;
+  discount_value: number;
+  remaining_uses: number | null;
+}
+
 export default function EventDetailClient({ event }: EventDetailClientProps) {
   const [code, setCode] = useState("");
   const [status, setStatus] = useState<CodeStatus>("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [displayPrice, setDisplayPrice] = useState(event.eventPrice);
   const animationRef = useRef<number | null>(null);
 
@@ -69,14 +80,34 @@ export default function EventDetailClient({ event }: EventDetailClientProps) {
     animationRef.current = requestAnimationFrame(tick);
   };
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
     const trimmed = code.trim().toUpperCase();
     if (!trimmed) return;
-    if (trimmed === event.promoCode) {
+    setStatus("checking");
+    setErrorMsg(null);
+    try {
+      const data = await apiFetch<ValidateResponse>("/api/promo/validate", {
+        method: "POST",
+        body: JSON.stringify({ code: trimmed, event_slug: event.slug }),
+      });
+      const targetPrice =
+        data.discount_type === "free"
+          ? 0
+          : data.discount_type === "percentage"
+            ? Math.max(
+                0,
+                Math.round(event.eventPrice * (1 - data.discount_value / 100)),
+              )
+            : Math.max(0, event.eventPrice - data.discount_value);
       setStatus("verified");
-      animatePriceTo(0);
-    } else {
+      animatePriceTo(targetPrice);
+    } catch (e) {
       setStatus("invalid");
+      setErrorMsg(
+        e instanceof ApiError
+          ? e.message
+          : "Gagal memverifikasi kode. Coba lagi.",
+      );
       animatePriceTo(event.eventPrice);
     }
   };
@@ -84,10 +115,12 @@ export default function EventDetailClient({ event }: EventDetailClientProps) {
   const handleReset = () => {
     setStatus("idle");
     setCode("");
+    setErrorMsg(null);
     animatePriceTo(event.eventPrice);
   };
 
   const verified = status === "verified";
+  const checking = status === "checking";
 
   return (
     <div className="rounded-3xl bg-white p-6 shadow-md ring-1 ring-black/5 sm:p-7 lg:sticky lg:top-24">
@@ -134,7 +167,10 @@ export default function EventDetailClient({ event }: EventDetailClientProps) {
             value={code}
             onChange={(e) => {
               setCode(e.target.value);
-              if (status !== "idle") setStatus("idle");
+              if (status !== "idle" && status !== "checking") {
+                setStatus("idle");
+                setErrorMsg(null);
+              }
             }}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
@@ -143,7 +179,7 @@ export default function EventDetailClient({ event }: EventDetailClientProps) {
               }
             }}
             placeholder="Masukkan kode"
-            disabled={verified}
+            disabled={verified || checking}
             className={`flex-1 rounded-xl border-0 px-4 py-3 text-sm uppercase tracking-wide text-[#1D1D1F] placeholder:text-[#6E6E73] focus:outline-none focus:ring-2 transition-all duration-200 ${
               status === "invalid"
                 ? "bg-red-50 ring-2 ring-red-300 focus:ring-red-400"
@@ -164,9 +200,10 @@ export default function EventDetailClient({ event }: EventDetailClientProps) {
             <button
               type="button"
               onClick={handleVerify}
-              className="rounded-xl bg-[#2563EB] px-4 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[#1d4fd8] active:scale-[0.98]"
+              disabled={checking}
+              className="rounded-xl bg-[#2563EB] px-4 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[#1d4fd8] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Cek
+              {checking ? "Cek…" : "Cek"}
             </button>
           )}
         </div>
@@ -175,8 +212,8 @@ export default function EventDetailClient({ event }: EventDetailClientProps) {
           <div className="mt-2 flex items-start gap-1.5 text-xs text-red-600">
             <XCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
             <span>
-              Kode tidak valid. Pastikan ejaan benar atau hubungi kami untuk
-              mendapatkan kode undangan.
+              {errorMsg ??
+                "Kode tidak valid. Pastikan ejaan benar atau hubungi kami untuk mendapatkan kode undangan."}
             </span>
           </div>
         )}

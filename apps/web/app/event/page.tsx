@@ -135,8 +135,8 @@ function EventCard({ event }: { event: Event }) {
   );
 }
 
-export default function EventPage() {
-  const events = getAllEvents();
+export default async function EventPage() {
+  const events = await getAllEvents();
 
   return (
     <main className="min-h-screen bg-[#F5F5F7]">
