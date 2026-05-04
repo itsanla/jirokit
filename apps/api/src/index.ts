@@ -4,6 +4,7 @@ import { logger } from "hono/logger";
 import type { Env, Variables } from "./types";
 import { eventsApp } from "./routes/events";
 import { promoApp } from "./routes/promo";
+import { registrationsApp } from "./routes/registrations";
 
 const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
@@ -27,6 +28,7 @@ const api = new Hono<{ Bindings: Env; Variables: Variables }>();
 api.get("/test", (c) => c.json({ message: "Test" }));
 api.route("/events", eventsApp);
 api.route("/promo", promoApp);
+api.route("/registrations", registrationsApp);
 
 app.get("/", (c) => c.text("jirokit api"));
 app.route("/api", api);
