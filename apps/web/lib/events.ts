@@ -51,8 +51,13 @@ function mapEvent(raw: RawEvent): Event {
 }
 
 export async function getAllEvents(): Promise<Event[]> {
-  const raw = await apiFetch<RawEvent[]>("/api/events");
-  return raw.map(mapEvent);
+  try {
+    const raw = await apiFetch<RawEvent[]>("/api/events");
+    return raw.map(mapEvent);
+  } catch (e) {
+    if (e instanceof TypeError && e.message.includes("fetch")) return [];
+    throw e;
+  }
 }
 
 export async function getAllEventSlugs(): Promise<string[]> {
@@ -66,6 +71,8 @@ export async function getEventBySlug(slug: string): Promise<Event | null> {
     return mapEvent(raw);
   } catch (e) {
     if (e instanceof ApiError && e.status === 404) return null;
+    // Connection error at build time — treat as not found
+    if (e instanceof TypeError && e.message.includes("fetch")) return null;
     throw e;
   }
 }

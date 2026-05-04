@@ -25,9 +25,22 @@ interface EventDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
+const FALLBACK_SLUGS = [
+  "digitalisasi-kuliner-nusantara",
+  "digitalisasi-kecantikan-nusantara",
+  "digitalisasi-kesehatan-nusantara",
+  "digitalisasi-fashion-nusantara",
+  "digitalisasi-pendidikan-nusantara",
+];
+
 export async function generateStaticParams() {
-  const slugs = await getAllEventSlugs();
-  return slugs.map((slug) => ({ slug }));
+  try {
+    const slugs = await getAllEventSlugs();
+    if (slugs.length > 0) return slugs.map((slug) => ({ slug }));
+  } catch {
+    // API unavailable at build time — use known slugs so build doesn't crash
+  }
+  return FALLBACK_SLUGS.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
