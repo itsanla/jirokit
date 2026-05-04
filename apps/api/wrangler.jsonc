@@ -15,8 +15,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "sekolah",
-      "database_id": "4f67f163-452a-4a19-aa37-0982b34b2e06",
+      "database_name": "jirokit",
+      "database_id": "a1600b98-28d8-4190-826f-8cca16949a62",
       "migrations_dir": "drizzle"
     }
   ],
