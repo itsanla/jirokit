@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
+
+const EVENT_HERO: Record<string, string> = {
+  "digitalisasi-kuliner-nusantara": "/event/umkm-kuliner.webp",
+  "digitalisasi-kecantikan-nusantara": "/event/umkm-kecantikan.webp",
+  "digitalisasi-kesehatan-nusantara": "/event/umkm-kesehatan.webp",
+  "digitalisasi-fashion-nusantara": "/event/umkm-fashion.webp",
+  "digitalisasi-pendidikan-nusantara": "/event/umkm-pendidikan.webp",
+};
 import Navbar from "@/components/navbar";
 import MobileFloatingNav from "@/components/mobile-floating-nav";
 import Footer from "@/components/footer";
@@ -118,6 +126,7 @@ export default async function EventDetailPage({
   }
 
   const relatedEvents = await getRelatedEvents(event.slug, 3);
+  const heroImage = EVENT_HERO[event.slug] ?? "/event/event.webp";
 
   const eventJsonLd = {
     "@context": "https://schema.org",
@@ -152,17 +161,32 @@ export default async function EventDetailPage({
       <Navbar />
       <MobileFloatingNav />
 
-      <section className="container mx-auto px-4 pt-28 pb-8 sm:px-6 sm:pt-32 lg:px-12 lg:pt-36 xl:px-16">
-        <Link
-          href="/event"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-[#6E6E73] transition-colors hover:text-[#1D1D1F]"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Semua Event
-        </Link>
-      </section>
+      {/* Hero */}
+      <div className="relative h-[50vh] min-h-[320px] w-full overflow-hidden sm:h-[55vh]">
+        <img
+          src={heroImage}
+          alt={event.title}
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/85" />
+        <div className="absolute inset-0 flex flex-col items-start justify-end px-5 pb-8 sm:px-8 sm:pb-10 lg:px-16 lg:pb-12 xl:px-20">
+          <Link
+            href="/event"
+            className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-medium text-white/90 backdrop-blur-sm transition-colors hover:bg-white/25"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Semua Event
+          </Link>
+          <p className="text-xs font-medium uppercase tracking-widest text-white/60">
+            Program Spesial · {event.target}
+          </p>
+          <h1 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-4xl">
+            {event.title}
+          </h1>
+        </div>
+      </div>
 
-      <section className="container mx-auto px-4 pb-12 sm:px-6 lg:px-12 xl:px-16">
+      <section className="container mx-auto px-4 pt-8 pb-12 sm:px-6 sm:pt-10 lg:px-12 lg:pt-12 xl:px-16">
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-10">
             <div className="lg:col-span-2">
@@ -177,13 +201,7 @@ export default async function EventDetailPage({
                   <StatusBadge remaining={event.remainingSlots} />
                 </div>
 
-                <p className="mt-6 text-xs font-medium uppercase tracking-wider text-[#2563EB]">
-                  Program Spesial
-                </p>
-                <h1 className="mt-2 text-3xl font-semibold tracking-tight text-[#1D1D1F] sm:text-4xl">
-                  {event.title}
-                </h1>
-                <p className="mt-3 text-base text-[#6E6E73] sm:text-lg">
+                <p className="mt-6 text-base text-[#6E6E73] sm:text-lg">
                   Untuk: {event.target}
                 </p>
 

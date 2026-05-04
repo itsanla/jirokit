@@ -143,22 +143,29 @@ export default async function EventPage() {
       <Navbar />
       <MobileFloatingNav />
 
-      <section className="container mx-auto px-4 pt-28 pb-12 sm:px-6 sm:pt-32 lg:px-12 lg:pt-36 xl:px-16">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-medium uppercase tracking-wider text-[#2563EB]">
+      {/* Hero */}
+      <div className="relative h-screen max-h-[560px] min-h-[380px] w-full overflow-hidden">
+        <img
+          src="/event/event.webp"
+          alt="Digitalisasi UMKM Nusantara"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/80" />
+        <div className="absolute inset-0 flex flex-col items-center justify-end px-4 pb-14 text-center sm:pb-16 lg:pb-20">
+          <p className="text-xs font-medium uppercase tracking-widest text-white/70">
             Program Spesial
           </p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#1D1D1F] sm:text-4xl lg:text-5xl">
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Digitalisasi UMKM Nusantara
           </h1>
-          <p className="mt-4 text-base text-[#6E6E73] sm:text-lg">
+          <p className="mt-4 max-w-2xl text-sm text-white/80 sm:text-base">
             Website profesional gratis untuk bisnis Indonesia terpilih.
             Hubungi kami untuk mendapatkan kode undangan eksklusif.
           </p>
         </div>
-      </section>
+      </div>
 
-      <section className="container mx-auto px-4 pb-20 sm:px-6 lg:px-12 xl:px-16">
+      <section className="container mx-auto px-4 pb-20 sm:px-6 lg:px-12 xl:px-16 py-5 lg:py-12">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {events.map((event) => (
             <EventCard key={event.slug} event={event} />
